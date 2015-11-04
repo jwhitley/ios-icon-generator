@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 #
 # Copyright (C) 2014 Wenva <lvyexuwenfa100@126.com>
 # 
@@ -65,9 +65,10 @@ EXAMPLE:
 EOF
 }
 
+# resize <target size> [output options] <file name>
 resize () {
-  info "Generate $2..."
-  convert $SRC_FILE -adaptive-sharpen 0x0.8 -resize $1 $DST_PATH/$2
+  info "Generate ${@: -1}..."
+  convert $SRC_FILE -adaptive-sharpen 0x0.8 -resize $1 "${@:2:-1}" $DST_PATH/${@: -1}
 }
 
 # Check ImageMagick
@@ -88,6 +89,9 @@ fi
 
 resize 512x512 iTunesArtwork.png
 resize 1024x1024 iTunesArtwork@2x.png
+
+# This version is used for the app store display
+resize 1024x1024 -alpha off AppStoreIcon.png
 
 resize 29x29 Icon-Small.png
 resize 58x58 Icon-Small@2x.png
