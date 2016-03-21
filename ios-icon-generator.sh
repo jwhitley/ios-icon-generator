@@ -68,7 +68,7 @@ EOF
 # resize <target size> [output options] <file name>
 resize () {
   info "Generate ${@: -1}..."
-  convert $SRC_FILE -adaptive-sharpen 0x0.8 -resize $1 "${@:2:-1}" $DST_PATH/${@: -1}
+  convert $SRC_FILE -adaptive-sharpen 0x0.8 -resize $1 "${@:2:-1}" PNG24:$DST_PATH/${@: -1}
 }
 
 # Check ImageMagick
@@ -93,13 +93,13 @@ resize 1024x1024 iTunesArtwork@2x.png
 # This version is used for the app store display
 resize 1024x1024 -alpha off AppStoreIcon.png
 
-resize 29x29 Icon-Small.png
-resize 58x58 Icon-Small@2x.png
-resize 87x87 Icon-Small@3x.png
+resize 29x29 Icon-29.png
+resize 58x58 Icon-29@2x.png
+resize 87x87 Icon-29@3x.png
 
-resize 40x40 Icon-Small-40.png
-resize 80x80 Icon-Small-40@2x.png
-resize 120x120 Icon-Small-40@3x.png
+resize 40x40 Icon-40.png
+resize 80x80 Icon-40@2x.png
+resize 120x120 Icon-40@3x.png
 
 resize 60x60 Icon-60.png
 resize 120x120 Icon-60@2x.png
@@ -108,13 +108,6 @@ resize 180x180 Icon-60@3x.png
 resize 76x76 Icon-76.png
 resize 152x152 Icon-76@2x.png
 
-resize 57x57 Icon.png
-resize 114x114 Icon@2x.png
-
-resize 72x72 Icon-72.png
-resize 144x144 Icon-72@2x.png
-
-resize 50x50 Icon-Small-50.png
-resize 100x100 Icon-Small-50@2x.png
+resize 167x167 Icon-83.5@2x.png
 
 info 'Generate Done.'
